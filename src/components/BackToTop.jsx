@@ -1,0 +1,29 @@
+import { useEffect, useState } from 'react';
+
+/**
+ * Floating circular button that fades in after scrolling past the
+ * hero and smooth-scrolls back to the top of the page.
+ */
+export default function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    function handleScroll() {
+      setVisible(window.scrollY > 400);
+    }
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      className="back-top"
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Back to top"
+    >
+      ↑
+    </button>
+  );
+}

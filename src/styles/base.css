@@ -1,0 +1,401 @@
+:root {
+  --green: #00ff88;
+  --green-dim: #00cc6a;
+  --green-dark: #003322;
+  --bg: #020c08;
+  --bg2: #050f0a;
+  --card: #0a1a12;
+  --card2: #0d1f16;
+  --border: #1a3a28;
+  --text: #e8f5ee;
+  --muted: #7a9e8a;
+  --font: 'Space Grotesk', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+  --display: 'Bebas Neue', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+body :where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  li,
+  button,
+  span,
+  label,
+  small,
+  strong,
+  b,
+  em,
+  i,
+  td,
+  th,
+  dt,
+  dd,
+  blockquote,
+  code,
+  [class*='title'],
+  [class*='label'],
+  [class*='desc'],
+  [class*='text'],
+  [class*='link'],
+  [class*='tag'],
+  [class*='badge'],
+  [class*='value'],
+  [class*='name'],
+  [class*='role'],
+  [class*='subtitle'],
+  [class*='kicker'],
+  [class*='code'],
+  [class*='item']
+) {
+  transition: color 0.22s ease, text-shadow 0.22s ease, filter 0.22s ease, transform 0.22s ease;
+}
+
+body :where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  li,
+  button,
+  span,
+  label,
+  small,
+  strong,
+  b,
+  em,
+  i,
+  td,
+  th,
+  dt,
+  dd,
+  blockquote,
+  code,
+  [class*='title'],
+  [class*='label'],
+  [class*='desc'],
+  [class*='text'],
+  [class*='link'],
+  [class*='tag'],
+  [class*='badge'],
+  [class*='value'],
+  [class*='name'],
+  [class*='role'],
+  [class*='subtitle'],
+  [class*='kicker'],
+  [class*='code'],
+  [class*='item']
+):hover,
+body :where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  a,
+  li,
+  button,
+  span,
+  label,
+  small,
+  strong,
+  b,
+  em,
+  i,
+  td,
+  th,
+  dt,
+  dd,
+  blockquote,
+  code,
+  [class*='title'],
+  [class*='label'],
+  [class*='desc'],
+  [class*='text'],
+  [class*='link'],
+  [class*='tag'],
+  [class*='badge'],
+  [class*='value'],
+  [class*='name'],
+  [class*='role'],
+  [class*='subtitle'],
+  [class*='kicker'],
+  [class*='code'],
+  [class*='item']
+):focus-visible {
+  color: #fff;
+  text-shadow:
+    0 0 6px rgba(0, 255, 136, 0.7),
+    0 0 16px rgba(0, 255, 136, 0.45),
+    0 0 28px rgba(0, 204, 255, 0.28);
+  filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.28));
+  animation: textGlowPulse 1.1s ease-in-out infinite alternate;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  transition: opacity 0.8s ease, transform 0.8s ease, filter 0.8s ease;
+}
+
+.app-shell-loading {
+  opacity: 0.5;
+  transform: scale(0.988);
+  filter: blur(10px) saturate(0.7);
+  pointer-events: none;
+  user-select: none;
+}
+
+.app-shell-ready {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.boot-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(0, 255, 136, 0.12), transparent 28%),
+    radial-gradient(circle at 80% 70%, rgba(0, 204, 255, 0.08), transparent 22%),
+    linear-gradient(180deg, #010804 0%, #02110b 100%);
+}
+
+.boot-loader::before,
+.boot-loader::after {
+  content: '';
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+}
+
+.boot-loader::before {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.22;
+  animation: loaderGridDrift 12s linear infinite;
+}
+
+.boot-loader::after {
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 255, 136, 0.1) 50%, transparent 100%);
+  height: 120px;
+  top: -140px;
+  animation: loaderSweep 4s linear infinite;
+  mix-blend-mode: screen;
+}
+
+.boot-loader.closing {
+  animation: loaderFadeOut 0.7s ease forwards;
+}
+
+.boot-loader-streaks,
+.boot-loader-mark {
+  position: absolute;
+  pointer-events: none;
+}
+
+.boot-loader-streaks {
+  width: min(92vw, 840px);
+  height: 280px;
+  display: grid;
+  place-items: center;
+  filter: drop-shadow(0 0 24px rgba(0, 255, 136, 0.18));
+}
+
+.boot-streak {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 1px;
+  border-radius: 999px;
+  transform-origin: center;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.9), rgba(255, 255, 255, 0.95), rgba(0, 204, 255, 0.8), transparent);
+  box-shadow: 0 0 24px rgba(0, 255, 136, 0.5);
+  opacity: 0;
+}
+
+.streak-1 {
+  width: min(88vw, 680px);
+  animation: streakShoot 1.4s ease-in-out infinite;
+}
+
+.streak-2 {
+  width: min(84vw, 620px);
+  animation: streakShoot 1.4s ease-in-out infinite 0.18s;
+}
+
+.streak-3 {
+  width: min(80vw, 560px);
+  animation: streakShoot 1.4s ease-in-out infinite 0.36s;
+}
+
+.boot-loader-mark {
+  z-index: 1;
+  width: 240px;
+  height: 240px;
+  display: grid;
+  place-items: center;
+  transform: scale(0.95);
+}
+
+.boot-logo {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 18px rgba(0, 255, 136, 0.22));
+}
+
+.boot-logo-ring,
+.boot-logo-d,
+.boot-logo-ribbon,
+.boot-logo-core,
+.boot-logo-flare {
+  fill: none;
+  stroke: url(#bootLogoStroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.boot-logo-ring-back {
+  stroke-width: 1.4;
+  stroke-dasharray: 410;
+  stroke-dashoffset: 410;
+  opacity: 0.45;
+  animation: ringDraw 1.4s ease forwards;
+}
+
+.boot-logo-ring-front {
+  stroke-width: 1.1;
+  stroke-dasharray: 560;
+  stroke-dashoffset: 560;
+  opacity: 0.7;
+  animation: ringDraw 1.6s ease forwards 0.1s;
+}
+
+.boot-logo-d {
+  stroke-width: 1.6;
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: logoDraw 1.05s ease forwards 0.25s;
+}
+
+.boot-logo-ribbon {
+  stroke-width: 1.5;
+  stroke-dasharray: 60;
+  stroke-dashoffset: 60;
+  opacity: 0.85;
+  animation: ribbonDraw 0.7s ease forwards 0.65s;
+}
+
+.boot-logo-core {
+  fill: rgba(0, 255, 136, 0.95);
+  stroke: none;
+  transform-origin: center;
+  animation: corePulse 1.1s ease-in-out infinite alternate;
+}
+
+.boot-logo-flare {
+  fill: rgba(0, 255, 136, 0.08);
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 1;
+  animation: flareBreath 1.8s ease-in-out infinite alternate;
+}
+
+.section-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  transition: background 1.2s ease;
+}
+
+.section-bg::before,
+.section-bg::after {
+  content: '';
+  position: absolute;
+  inset: -12%;
+  pointer-events: none;
+}
+
+.section-bg::before {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(0, 255, 136, 0.16), transparent 28%),
+    radial-gradient(circle at 80% 80%, rgba(0, 204, 255, 0.1), transparent 24%),
+    linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.02) 50%, transparent 100%);
+  background-size: 140% 140%;
+  mix-blend-mode: screen;
+  opacity: 0.8;
+  animation: ambientDrift 18s ease-in-out infinite alternate;
+}
+
+.section-bg::after {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(255, 255, 255, 0.03) 48%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 52%,
+    transparent 100%
+  );
+  background-size: 100% 240px;
+  opacity: 0.18;
+  animation: ambientScan 11s linear infinite;
+}
+
+.scroll-page {
+  position: relative;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transform-origin: center center;
+  will-change: transform, opacity;
+  transition: transform 0.12s linear, opacity 0.12s linear;
+}
+
+canvas {
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
+}
