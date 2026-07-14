@@ -6,7 +6,7 @@ export const profile = {
   email: 'dhivyakanth20@gmail.com',
   phone: '8072181949',
   location: 'Tiruchengode, Namakkal',
-  avatar: 'https://i.pravatar.cc/300?img=68',
+  avatar: '/_DSC0496.JPG',
   roles: ['Full Stack Developer', 'AI & ML Engineer', 'React Developer', 'Node.js Expert'],
   bio: "I thrive on solving real-world problems, turning ideas into clean, maintainable code, and learning through experimentation. You'll find me building side projects, diving into new tech stacks, or simply exploring AI development.",
   socials: {
@@ -168,15 +168,15 @@ export const education = [
 
 export const educationImages = [
   {
-    img: 'https://images.unsplash.com/photo-1562774053-701939374585?w=800&q=80',
+    img: '/ksr-college.webp',
     badge: 'LEARN',
     label: 'K.S. RANGASAMY COLLEGE OF TECHNOLOGY',
     badgeColor: 'var(--green)',
   },
   {
-    img: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80',
+    img: '/ksr-matric-school.webp',
     badge: 'LEARNING',
-    label: 'ACADEMIC EXCELLENCE',
+    label: 'K.S.R. MATRICulation SCHOOL',
     badgeColor: '#00ccff',
   },
 ];
