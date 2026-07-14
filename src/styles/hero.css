@@ -194,7 +194,12 @@ section {
   height: 220px;
   margin: 0 auto 32px;
   transform-style: preserve-3d;
-  transition: transform 0.4s ease;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  cursor: grab;
+}
+
+.hero-img-wrap:active {
+  cursor: grabbing;
 }
 
 .hero-img-wrap::before {
@@ -210,7 +215,7 @@ section {
 }
 
 .hero-img-wrap:hover {
-  transform: rotateY(8deg) rotateX(-6deg) scale(1.04);
+  transform: rotateX(var(--card-tilt-x, 0deg)) rotateY(var(--card-tilt-y, 0deg)) scale(1.04);
 }
 
 .hero-img-wrap img {

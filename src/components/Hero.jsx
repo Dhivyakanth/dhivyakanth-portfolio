@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { profile } from '../data/portfolioData';
+import { useCardTilt } from '../hooks/useCardTilt';
 import { useSectionObserver } from '../hooks/useSectionObserver';
 
 /**
@@ -10,6 +10,7 @@ import { useSectionObserver } from '../hooks/useSectionObserver';
  */
 export default function Hero({ onSectionVisible }) {
   useSectionObserver('sec-about', 'about', onSectionVisible);
+  const tiltHandlers = useCardTilt({ maxTilt: 12 });
 
   return (
     <section id="sec-about" className="hero scroll-page" data-scroll-3d>
@@ -45,10 +46,12 @@ export default function Hero({ onSectionVisible }) {
         <span> DEVELOPER</span>
       </div>
 
-      <div className="hero-img-wrap reveal visible" style={{ animationDelay: '.55s' }}>
-        <div className="hero-img-glow" />
-        <img src={profile.avatar} alt={profile.name} />
-        <div className="hero-dot" />
+      <div className="reveal visible" style={{ animationDelay: '.55s' }}>
+        <div className="hero-img-wrap" {...tiltHandlers}>
+          <div className="hero-img-glow" />
+          <img src={profile.avatar} alt={profile.name} />
+          <div className="hero-dot" />
+        </div>
       </div>
 
       <div className="hero-code reveal visible" style={{ animationDelay: '.65s' }}>
