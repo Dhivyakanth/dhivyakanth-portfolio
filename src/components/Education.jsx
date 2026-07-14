@@ -13,11 +13,11 @@ import { useSectionObserver } from '../hooks/useSectionObserver';
  * achievements. Entry cards nudge right and glow on hover.
  */
 export default function Education({ onSectionVisible }) {
-  useSectionObserver('sec-edu', 'education', onSectionVisible);
+  useSectionObserver('sec-education', 'education', onSectionVisible);
   const tiltHandlers = useCardTilt({ maxTilt: 8 });
 
   return (
-    <section id="sec-edu" className="scroll-page" data-scroll-3d style={{ padding: '80px 0 60px' }}>
+    <section id="sec-education" className="scroll-page" data-scroll-3d style={{ padding: '80px 0 60px' }}>
       <div className="edu-wrap">
         <p className="sec-label reveal reveal-1">// EDUCATION & CERTIFICATIONS</p>
         <h2 className="sec-title reveal reveal-2">Academic Background</h2>

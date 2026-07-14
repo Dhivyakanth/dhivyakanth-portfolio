@@ -72,6 +72,20 @@
   transform: translateX(4px) rotateX(var(--card-tilt-x, 0deg)) rotateY(var(--card-tilt-y, 0deg));
 }
 
+.timeline-card:hover .timeline-company {
+  text-shadow:
+    0 0 8px rgba(255, 255, 255, 0.8),
+    0 0 16px rgba(255, 255, 255, 0.5),
+    0 0 24px rgba(255, 255, 255, 0.3);
+}
+
+.timeline-card:hover .timeline-bullets li {
+  color: #fff;
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.6),
+    0 0 12px rgba(255, 255, 255, 0.4);
+}
+
 .timeline-company {
   font-weight: 700;
   font-size: 16px;

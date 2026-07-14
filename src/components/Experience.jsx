@@ -8,11 +8,11 @@ import { useSectionObserver } from '../hooks/useSectionObserver';
  * each dot pulses with a soft ring, and cards nudge right on hover.
  */
 export default function Experience({ onSectionVisible }) {
-  useSectionObserver('sec-exp', 'experience', onSectionVisible);
+  useSectionObserver('sec-experience', 'experience', onSectionVisible);
   const tiltHandlers = useCardTilt({ maxTilt: 8 });
 
   return (
-    <section id="sec-exp" className="scroll-page" data-scroll-3d style={{ padding: '80px 0 60px' }}>
+    <section id="sec-experience" className="scroll-page" data-scroll-3d style={{ padding: '80px 0 60px' }}>
       <div className="exp-wrap">
         <div>
           <p className="sec-label reveal reveal-1">// EXPERIENCE</p>

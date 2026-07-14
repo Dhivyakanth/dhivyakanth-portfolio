@@ -97,11 +97,11 @@
 .project-deck-container {
   position: relative;
   width: 100%;
-  height: 320px;
+  height: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 800px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 32px;
 }
@@ -109,14 +109,34 @@
 .proj-card {
   position: absolute;
   width: 260px;
+  height: 300px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 20px;
   cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+              opacity 0.4s ease,
+              filter 0.4s ease,
+              box-shadow 0.4s ease,
+              width 0.4s ease,
+              height 0.4s ease,
+              background 0.3s ease,
+              border-color 0.3s ease;
   transform-style: preserve-3d;
   perspective: 1200px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.proj-card.expanded {
+  overflow: visible;
+}
+
+.proj-card.expanded .proj-card-desc {
+  max-height: none;
+  -webkit-line-clamp: unset;
+  display: block;
 }
 
 .proj-card:hover {
@@ -166,6 +186,12 @@
   color: var(--muted);
   line-height: 1.5;
   margin-bottom: 12px;
+  max-height: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
 }
 
 .proj-tags {
@@ -190,9 +216,15 @@
     gap: 12px;
   }
   .project-deck-container {
-    height: 600px;
+    height: 400px;
   }
   .proj-card {
     width: 220px;
+    height: 260px;
+  }
+  .proj-card.expanded {
+    width: 280px;
+    height: auto;
+    min-height: 260px;
   }
 }

@@ -10,9 +10,9 @@ export const profile = {
   roles: ['Full Stack Developer', 'AI & ML Engineer', 'React Developer', 'Node.js Expert'],
   bio: "I thrive on solving real-world problems, turning ideas into clean, maintainable code, and learning through experimentation. You'll find me building side projects, diving into new tech stacks, or simply exploring AI development.",
   socials: {
-    linkedin: '#',
-    github: '#',
-    leetcode: '#',
+    linkedin: 'https://www.linkedin.com/in/dhivyakanth/',
+    github: 'https://github.com/Dhivyakanth',
+    leetcode: 'https://leetcode.com/u/4CSqeEzFyk/',
   },
 };
 
@@ -133,21 +133,28 @@ export const projects = [
     title: 'River AI',
     desc: 'An IoT solution for real-time environmental monitoring of water quality using pH, turbidity sensors.',
     tags: ['Raspberry Pi 5', 'IoT', 'GPS/GSM'],
-    offset: { x: -220, y: 20, rot: -8 },
+    offset: { x: -300, y: 30, rot: -10 },
   },
   {
     badge: 'Full-Stack',
     title: 'AI Sales Chatbot',
     desc: 'Built a full-stack chatbot using React, Flask, and Gemini API with real-time sales data integration.',
     tags: ['React', 'Flask', 'Gemini API'],
-    offset: { x: 0, y: -20, rot: 2 },
+    offset: { x: -100, y: -10, rot: -3 },
   },
   {
     badge: 'Multi-Tier',
     title: 'Sign Language Chatbot',
     desc: 'Sign Language recognition using OpenCV with CNN models for gesture understanding.',
     tags: ['MediaPipe', 'OpenCV', 'TensorFlow'],
-    offset: { x: 220, y: 20, rot: 8 },
+    offset: { x: 100, y: 10, rot: 3 },
+  },
+  {
+    badge: 'ERP',
+    title: 'MMUPVC ERP Dashboard',
+    desc: 'Developed a centralized ERP system to manage expenses, labour, production, and payments using React, TypeScript, Node.js, Express.js, and Supabase, with real-time updates and automated reporting.',
+    tags: ['React 19', 'TypeScript', 'Vite', 'Node.js', 'Express.js', 'Supabase'],
+    offset: { x: 300, y: 25, rot: 10 },
   },
 ];
 
@@ -190,8 +197,9 @@ export const certifications = [
 
 export const achievements = [
   "Co-author of the book Hope's Tapestry",
-  'Regular coding practice on LeetCode platform',
+  'Solved 170+ problems in LeetCode',
   'Selected for Smart India Hackathon (college level)',
+  'Inter Department Hackathon Winner'
 ];
 
 export const contactCards = [

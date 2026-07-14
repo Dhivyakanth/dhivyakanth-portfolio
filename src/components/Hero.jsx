@@ -85,7 +85,19 @@ export default function Hero({ onSectionVisible }) {
       </div>
 
       <div className="hero-actions reveal visible" style={{ animationDelay: '.85s' }}>
-        <button className="btn-resume">⬇ My Resume</button>
+        <button
+          className="btn-resume"
+          onClick={() => {
+            const link = document.createElement('a');
+            link.href = '/1Dhivyakanth_Final_Resume.pdf';
+            link.download = 'Dhivyakanth_Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          }}
+        >
+          ⬇ My Resume
+        </button>
         <div className="hero-links">
           <a href={profile.socials.linkedin}>/ LinkedIn</a>
           <a href={profile.socials.github}>/ GitHub</a>
