@@ -92,8 +92,8 @@ export default function Hero({ onSectionVisible }) {
           className="btn-resume"
           onClick={() => {
             const link = document.createElement('a');
-            link.href = '/1Dhivyakanth_Final_Resume.pdf';
-            link.download = 'Dhivyakanth_Resume.pdf';
+            link.href = '/caterpillar_resume.pdf';
+            link.download = 'caterpillar_resume.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);

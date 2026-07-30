@@ -7,14 +7,9 @@ const STATUS = {
   IDLE: 'idle',
   SENDING: 'sending',
   SENT: 'sent',
+  ERROR: 'error',
 };
 
-/**
- * Contact form + info cards. The form is client-side only here (no
- * backend wired up) but tracks real input state and shows a brief
- * sending → sent animation on submit so it feels alive. Wire `handleSubmit`
- * up to your API/email service of choice when you're ready to go live.
- */
 export default function Contact({ onSectionVisible }) {
   useSectionObserver('sec-contact', 'contact', onSectionVisible);
   const tiltHandlers = useCardTilt({ maxTilt: 7 });
@@ -26,17 +21,31 @@ export default function Contact({ onSectionVisible }) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
 
     setStatus(STATUS.SENDING);
-    // Simulated send — replace with a real API call (fetch/EmailJS/etc.)
-    setTimeout(() => {
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+          ...form,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Failed to send');
+
       setStatus(STATUS.SENT);
       setForm({ name: '', email: '', message: '' });
       setTimeout(() => setStatus(STATUS.IDLE), 2500);
-    }, 1200);
+    } catch {
+      setStatus(STATUS.ERROR);
+      setTimeout(() => setStatus(STATUS.IDLE), 3000);
+    }
   }
 
   return (
@@ -83,7 +92,9 @@ export default function Contact({ onSectionVisible }) {
             />
             <button className="btn-send" type="submit" disabled={status === STATUS.SENDING}>
               {status === STATUS.SENDING && <span className="spin">↻</span>}
-              {status === STATUS.SENT ? '✓ Sent!' : status === STATUS.SENDING ? 'Sending...' : '✈ Send Message'}
+              {status === STATUS.SENT && '✓ Sent!'}
+              {status === STATUS.ERROR && '✗ Failed — Try Again'}
+              {status === STATUS.IDLE && '✈ Send Message'}
             </button>
           </form>
 
