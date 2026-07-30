@@ -93,7 +93,7 @@ export default function Hero({ onSectionVisible }) {
           onClick={() => {
             const link = document.createElement('a');
             link.href = '/caterpillar_resume.pdf';
-            link.download = 'caterpillar_resume.pdf';
+            link.download = 'Resume.pdf';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
